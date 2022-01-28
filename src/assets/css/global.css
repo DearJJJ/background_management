@@ -22,3 +22,11 @@ body,
 .el-table__expanded-cell {
   padding: 22px 50px !important;
 }
+
+.el-cascader-panel {
+  height: 400px;
+}
+
+.el-cascader {
+  width: 300px;
+}

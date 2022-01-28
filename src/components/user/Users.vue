@@ -295,7 +295,7 @@ export default {
     },
     async showEditDialog(id) {
       const { data: res } = await this.$http.get('users/' + id);
-      if (res.meta.status !== 200) return this.$message("查询用户信息失败");
+      if (res.meta.status !== 200) return this.$message(res.meta.msg);
       this.editUserFormData = res.data;
       this.editDialogVisible = true;
     },

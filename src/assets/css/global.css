@@ -30,3 +30,16 @@ body,
 .el-cascader {
   width: 300px;
 }
+
+.el-steps {
+  margin: 15px 0;
+}
+
+.el-step__title {
+  font-size: 13px;
+}
+
+.el-scrollbar__wrap { 
+  overflow-x: hidden;
+}
+

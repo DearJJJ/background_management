@@ -106,8 +106,8 @@
       width="40%"
       @closed="addDialogClosed">
       <el-form 
-        ref="addUserFormRef" 
-        :model="addUserFormData" 
+        ref="addUserFormRef"
+        :model="addUserFormData"
         label-width="80px"
         :rules="addUserFormRules">
         <el-form-item label="用户名" prop="username">
@@ -358,6 +358,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 
 </style>

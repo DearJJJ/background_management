@@ -7,6 +7,8 @@ import './assets/fonts/iconfont.css'
 import axios from 'axios'
 import TreeTable from 'vue-table-with-tree-grid'
 import VueQuillEditor from 'vue-quill-editor'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
@@ -17,9 +19,15 @@ axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // axios.defaults.baseURL = 'https://lianghj.top:8888/api/private/v1/'
 
 axios.interceptors.request.use(config => {
+  NProgress.start();
   config.headers.Authorization = window.sessionStorage.getItem('token');
   return config;
 })
+axios.interceptors.response.use(config => {
+  NProgress.done();
+  return config;
+})
+
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
 

@@ -9,7 +9,7 @@
       <el-form 
         class="login_form" 
         :model="loginForm" 
-        :rules="loginFormRules" 
+        :rules="loginFormRules"
         ref="loginFormRef">
         <!-- 用户名 -->
         <el-form-item prop="username">

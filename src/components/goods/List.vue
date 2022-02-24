@@ -37,8 +37,31 @@
         </el-table-column>
         <el-table-column label="操作" width="130px">
           <template slot-scope="scope">
-            <el-button type="primary" size="mini" icon="el-icon-edit" ></el-button>
-            <el-button type="danger" size="mini" icon="el-icon-delete" @click="deleteGoodById(scope.row.goods_id)"></el-button>
+            <el-tooltip 
+              effect="dark" 
+              content="编辑商品" 
+              placement="top" 
+              :enterable="false">
+              <el-button 
+                type="primary" 
+                size="mini" 
+                icon="el-icon-edit"
+                round>
+              </el-button>
+            </el-tooltip>
+            <el-tooltip 
+              effect="dark" 
+              content="删除商品" 
+              placement="top" 
+              :enterable="false">
+              <el-button 
+                type="danger" 
+                size="mini" 
+                icon="el-icon-delete"
+                round 
+                @click="deleteGoodById(scope.row.goods_id)">
+              </el-button>
+            </el-tooltip>
           </template>
         </el-table-column>
       </el-table>
@@ -99,10 +122,10 @@ export default {
           this.$message.success("删除成功");
           this.getGoodsList();
       }).catch(() => {
-        this.$message({
+        /* this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
+        }); */          
       });
     },
     goAddGoodsPage() {

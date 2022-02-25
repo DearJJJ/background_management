@@ -79,7 +79,9 @@
   .login_container {
     position: relative;
     height: 100%;
-    background-color: #2b4b6b;
+    // background-color: #2b4b6b;
+    background-image: url('../assets/nit.jpg');
+    background-size: 100% 100%;
   }
 
   .login_box {

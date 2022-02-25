@@ -12,11 +12,11 @@
       <el-row :gutter="20">
         <el-col :span="8">
           <el-input placeholder="请输入内容" clearable>
-            <el-button slot="append" icon="el-icon-search"></el-button>
+            <el-button slot="append" icon="el-icon-search" @click="getOrderDataListByParam"></el-button>
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary">添加商品</el-button>
+          <el-button type="primary" @click="toAddGoodPage">添加商品</el-button>
         </el-col>
       </el-row>
       <!-- 表格区 -->
@@ -58,18 +58,24 @@
           label="操作"
           width="130px">
           <template slot-scope="scope">
-            <el-button 
-              type="primary" 
-              size="mini" 
-              icon="el-icon-edit"
-              @click="showEditAddressDialog">
-            </el-button>
-            <el-button
-              type="success" 
-              size="mini" 
-              icon="el-icon-location"
-              @click="showLogisticsProcessDialog">
-            </el-button>
+            <el-tooltip effect="dark" content="修改地址" placement="top" :enterable="false">
+              <el-button 
+                type="primary" 
+                size="mini" 
+                icon="el-icon-edit"
+                @click="showEditAddressDialog"
+                round>
+              </el-button>
+            </el-tooltip>
+            <el-tooltip effect="dark" content="物流信息" placement="top" :enterable="false">
+              <el-button
+                type="success" 
+                size="mini" 
+                icon="el-icon-location"
+                round
+                @click="showLogisticsProcessDialog">
+              </el-button>
+            </el-tooltip>
           </template>
         </el-table-column>
       </el-table>
@@ -109,7 +115,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="editAddressDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="editAddressDialogVisible = false">确 定</el-button>
+          <el-button type="primary" @click="submitEditAddress">确 定</el-button>
         </span>
       </el-dialog>
 
@@ -202,6 +208,15 @@ export default {
       this.getLogisticsMessage();
       this.logisticsProcessDialogVisible = true;
     },
+    getOrderDataListByParam() {
+      this.$message.error('功能未开发！');
+    },
+    submitEditAddress() {
+      this.$message.error('功能未开发！');
+    },
+    toAddGoodPage() {
+      this.$router.push('/goods/add');
+    }
   }
 }
 </script>

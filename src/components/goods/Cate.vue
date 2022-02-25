@@ -35,7 +35,9 @@
         <!-- 操作列 -->
         <!-- TODO -->
         <template slot="operation" slot-scope="scope" class="operateClass" >
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <el-button type="primary" size="small" round @click="showEditCateDialog(scope.row)">编辑</el-button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <el-button type="danger" size="small" round @click="deleteCategoryById(scope.row)">删除</el-button>
         </template>
       </tree-table>

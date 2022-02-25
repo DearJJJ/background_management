@@ -327,10 +327,10 @@ export default {
           this.$message.success("删除成功");
           this.getUserList();
       }).catch(() => {
-        this.$message({
+        /* this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
+        });  */         
       });
     },
     showSetRoleDialog(userDataRow) {

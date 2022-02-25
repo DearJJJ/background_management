@@ -46,7 +46,8 @@
                 type="primary" 
                 size="mini" 
                 icon="el-icon-edit"
-                round>
+                round
+                @click="showEditGoodDialog(scope.row.goods_id)">
               </el-button>
             </el-tooltip>
             <el-tooltip 
@@ -77,6 +78,41 @@
         background>
       </el-pagination>
     </el-card>
+    
+    <!-- 编辑商品对话框 -->
+    <el-dialog
+      title="编辑商品"
+      :visible.sync="editGoodDialogVisible"
+      width="60%"
+      @close="resetEditGoodForm">
+      <el-form 
+        ref="editGoodFormRef"
+        :model="editGoodFormData"
+        label-width="80px"
+        :rules="editGoodFormRules">
+        <el-form-item label="商品名称" prop="goods_name">
+          <el-input v-model="editGoodFormData.goods_name"></el-input>
+        </el-form-item>
+        <el-form-item label="价格" prop="goods_price">
+          <el-input v-model="editGoodFormData.goods_price"></el-input>
+        </el-form-item>
+        <el-form-item label="数量" prop="goods_number">
+          <el-input v-model="editGoodFormData.goods_number"></el-input>
+        </el-form-item>
+        <el-form-item label="重量" prop="goods_weight">
+          <el-input v-model="editGoodFormData.goods_weight"></el-input>
+        </el-form-item>
+        <el-form-item label="介绍" prop="goods_introduce">
+          <quill-editor
+              v-model="editGoodFormData.goods_introduce">
+          </quill-editor>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="editGoodDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submitEditGoodForm">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -93,7 +129,15 @@ export default {
         pagesize: 10
       },
       goodsList: [],
-      total: 0
+      total: 0,
+      editGoodDialogVisible: false,
+      editGoodFormData: {},
+      editGoodFormRules: {
+        goods_name: { required: true, message: '请输入商品名称', trigger: 'blur' },
+        goods_price: { required: true, message: '请输入商品名称', trigger: 'blur' },
+        goods_number: { required: true, message: '请输入商品名称', trigger: 'blur' },
+        goods_weight: { required: true, message: '请输入商品名称', trigger: 'blur' }
+      }
     }
   },
   methods: {
@@ -130,11 +174,35 @@ export default {
     },
     goAddGoodsPage() {
       this.$router.push('/goods/add');
+    },
+    showEditGoodDialog(id) {
+      this.getGoodById(id);
+      this.editGoodDialogVisible = true;
+    },
+    resetEditGoodForm() {
+      this.$refs.editGoodFormRef.resetFields();
+    },
+    async getGoodById(id) {
+      const { data: res } = await this.$http.get(`goods/${id}`);
+      if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
+      this.editGoodFormData = res.data;
+    },
+    async submitEditGoodForm() {
+      /* const { data: res } = await this.$http.put(`goods/${this.editGoodFormData.goods_id}`, {
+        goods_name: this.editGoodFormData.goods_name,
+        goods_price: this.editGoodFormData.goods_price,
+        goods_number: this.editGoodFormData.goods_number,
+        goods_weight: this.editGoodFormData.goods_weight
+      });
+      console.log(res); */
+      this.$message.error('功能未开通');
     }
   }
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+  /deep/ .ql-editor {
+    min-height: 180px;
+  }
 </style>

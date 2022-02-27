@@ -15,7 +15,7 @@ import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
 
-axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+axios.defaults.baseURL = 'http://liaoqs.top:8888/api/private/v1/'
 // axios.defaults.baseURL = 'https://lianghj.top:8888/api/private/v1/'
 
 axios.interceptors.request.use(config => {

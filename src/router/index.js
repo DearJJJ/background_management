@@ -21,7 +21,7 @@ const routes = [
   {
     path:'/home', 
     component: Home, 
-    redirect: '/reports', 
+    redirect: '/welcome', 
     children: [
       { path: '/welcome', component: Welcome },
       { path: '/users', component: Users },

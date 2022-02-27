@@ -23,8 +23,8 @@
 #### 项目结构
 
 
+![电商后台管理系统](https://user-images.githubusercontent.com/87460147/155869725-c2574574-5b50-419c-860a-638e5ec13b2d.png)
 
-<img src="C:\Users\Administrator\Pictures\Saved Pictures\电商后台管理系统.png" alt="电商后台管理系统" style="zoom: 25%;" />
 
 
 
